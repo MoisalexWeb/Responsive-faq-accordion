@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700;900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-size: 12px;
+}
+
+:root {
+	/* BACKGROUND */
+	--soft-violet: #af67e9;
+	--soft-blue: #6565e7;
+
+	/* TEXTS */
+	--very-dark-desaturated-blue: #1d1e35;
+	--soft-red: #f47c57;
+
+	--very-dark-grayish-blue: #4a4b5e;
+	--dark-grayish-blue: #787887;
+
+	--wave: #09f;
+
+	/* DIVIDERS */
+	--light-grayish-blue: #e7e7e9;
+}
+
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+body {
+	font-family: 'Kumbh Sans', sans-serif;
+	background: linear-gradient(var(--soft-violet), var(--soft-blue));
+	width: 100%;
+	min-height: 100vh;
+	padding: 150px 0 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+main {
+	width: 90%;
+	max-width: 600px;
+}
+
+.container {
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+	border-radius: 10px;
+	background-color: #fff;
+	padding: 30px;
+	box-shadow: 5px 5px 20px rgba(29, 30, 53,0.4);
+}
+
+
+
+.container__wave {
+	width: 109px;
+	height: 70px;
+	position: relative;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.container__wave h1 {
+	text-align: center;
+	font-size: 50px;
+	font-weight: 900;
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #fff;
+}
+
+.container__wave .border {
+	text-shadow:
+		-1px 2px 0 var(--soft-blue),
+		 1px -1px 0 var(--soft-blue),
+		-1px -1px 0 var(--soft-blue),
+		 1px 2px 0 var(--soft-blue);
+}
+
+.container__wave .wave {
+	color: var(--soft-blue);
+	animation: wave 3s ease-in-out infinite;
+}
+
+@keyframes wave {
+	0%, 100% {
+		clip-path: polygon(
+			0% 47%,
+			10% 48%,
+			33% 54%,
+			54% 60%,
+			70% 61%,
+			84% 59%,
+			100% 52%,
+			100% 100%,
+			0% 100%
+		);
+	}
+
+	50% {
+		clip-path: polygon(
+			0% 60%,
+			15% 65%,
+			34% 66%,
+			51% 62%,
+			67% 50%,
+			84% 45%,
+			100% 46%,
+			100% 100%,
+			0 100%
+		);
+	}
+}
+
+
+/* IMAGE */
+.container__figure {
+	position: relative;
+	margin-top: -150px;
+}
+
+.container__figure-img {
+	position: relative;
+	filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
+	max-width: 300px;
+	display: block;
+	margin: auto;
+	z-index: 50;
+}
+
+.container__figure__shadow {
+	width: 95%;
+	height: 150px;
+	background-image: url(../images/bg-pattern-mobile.svg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	margin: -120px auto 0;
+}
+
+/* FAQ */
+.container__faq__item {
+	border-bottom: 2px solid var(--light-grayish-blue);
+	padding-bottom: 10px;
+}
+
+.container__faq__item__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px 0 10px;
+}
+
+.container__faq__item__header-title {
+	font-size: 12px;
+	font-weight: 400;
+	color: var(--very-dark-grayish-blue);
+	transition: all 0.3s ease;
+	cursor: pointer;
+}
+
+.container__faq__item__header-title:hover {
+	font-weight: 700;
+	color: var(--soft-red);
+}
+
+.container__faq__item__header-arrow {
+	width: 12px;
+	cursor: pointer;
+	transition: transform 0.4s ease-in-out;
+}
+
+.container__faq__item__header.active > .container__faq__item__header-title {
+	font-weight: 700;
+	color: var(--very-dark-desaturated-blue);
+}
+
+.container__faq__item__header.active > .container__faq__item__header-arrow {
+	transform: rotate(180deg);
+}
+
+.container__faq__item-paragraph {
+	color: var(--dark-grayish-blue);
+	padding-right: 15px;
+	height: 0;
+	overflow: hidden;
+	transition: height 0.4s ease-in-out;
+	line-height: 1.5;
+	font-size: 12px;
+}
+
+
+
+@media screen and (min-width: 1024px) {
+	main {
+		max-width: 900px;
+	}
+
+	.container {
+		max-width: 100%;
+		display: flex;
+		justify-content: space-around;
+		background-image: url(../images/bg-pattern-desktop.svg);
+		background-repeat: no-repeat;
+		background-position-x: 770%;
+		background-position-y: -300px;
+	}
+
+	.container__figure {
+		width: 50%;
+		margin-top: 0;
+	}
+
+	.container__figure-img {
+		max-width: 110%;
+		margin-left: -100px;
+		margin-top: 40px;
+	}
+
+	.container__figure__shadow {
+		display: none;
+	}
+
+	.container__wave {
+		width: 150px;
+		height: 100px;
+	}
+
+	.container__wave h1 {
+		font-size: 60px;
+	}
+
+	.container__faq {
+		width: 40%;
+	}
+
+	.container__faq__item__header-title {
+		font-size: 15px;
+	}
+}
